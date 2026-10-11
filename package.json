@@ -1,0 +1,9 @@
+{
+  "name": "herradura",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@neondatabase/serverless": "latest",
+    "@vercel/blob": "latest"
+  }
+}

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Herradura Restaurante – Churrasco, comida caseira e parrilla no Caminho do Vinho</title>
+    <meta name="description"
+        content="Churrasco, comida caseira e carnes na parrilha no Caminho do Vinho, em São José dos Pinhais.">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:wght@400;600&display=swap">
+    <link rel="icon" href="/logo.png">
+    <script type="application/ld+json" id="ld"></script>
+    <style>
+        :root {
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            --bg: #F3E9D8;
+            --alt: #E9DCC2;
+            --hero: #E6D5B6;
+            --card: #FBF6EA;
+            --ph: #DCCBA9;
+            --ink: #2e1c10;
+            --hd: #4A2E1B;
+            --acc: #8B5A2B;
+            --ln: #CDB48C
+        }
+
+        @media(prefers-color-scheme:dark) {
+            :root:not([data-theme=light]) {
+                --bg: #1f150d;
+                --alt: #28190f;
+                --hero: #2a1b11;
+                --card: #33231a;
+                --ph: #3a2718;
+                --ink: #F3E9D8;
+                --hd: #E7C79B;
+                --acc: #D9A66B;
+                --ln: #5a4026
+            }
+
+            :root:not([data-theme=light]) .hero:not(.video) .logo {
+                filter: brightness(0) invert(.93) sepia(.25)
+            }
+        }
+
+        :root[data-theme=dark] {
+            --bg: #1f150d;
+            --alt: #28190f;
+            --hero: #2a1b11;
+            --card: #33231a;
+            --ph: #3a2718;
+            --ink: #F3E9D8;
+            --hd: #E7C79B;
+            --acc: #D9A66B;
+            --ln: #5a4026
+        }
+
+        :root[data-theme=dark] .hero:not(.video) .logo {
+            filter: brightness(0) invert(.93) sepia(.25)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        img {
+            max-width: 100%
+        }
+
+        html {
+            scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 60px);
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 17px/1.6 Lora, Georgia, serif
+        }
+
+        h1,
+        h2,
+        h3,
+        .nav b,
+        .rest {
+            font-family: Cinzel, 'Trajan Pro', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.2
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            margin: 0 0 8px;
+            color: var(--hd);
+            text-align: center;
+            letter-spacing: .06em
+        }
+
+        h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 2px;
+            margin: 10px auto 0;
+            background: linear-gradient(90deg, transparent, #8B5A2B, transparent)
+        }
+
+        /* Menu superior em tom solido do tema */
+        .wood {
+            background: #4A2E1B;
+            color: #F3E2C3
+        }
+
+        .btn,
+        .btns button,
+        .ab button,
+        .ah button,
+        form button,
+        .tabs button.on {
+            display: inline-block;
+            background: #4A2E1B;
+            color: #F8EAD0;
+            border: 1px solid #4A2E1B;
+            min-height: 44px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font: inherit;
+            text-decoration: none;
+            cursor: pointer
+        }
+
+        .btn:hover,
+        .btns button:hover {
+            filter: brightness(1.12)
+        }
+
+        .btn.alt {
+            background: none;
+            box-shadow: none;
+            text-shadow: none;
+            color: var(--hd);
+            border: 1px solid var(--hd)
+        }
+
+        .cap {
+            background: #4A2E1B;
+            color: #F8EAD0;
+            padding: 10px 14px;
+            font-size: .92rem
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: calc(8px + env(safe-area-inset-top, 0px)) 20px 8px;
+            border-bottom: 3px solid #2a170b;
+            transform: translateY(-110%);
+            transition: transform .3s ease
+        }
+
+        .nav.show {
+            transform: none
+        }
+
+        .nav b {
+            font-size: 1rem;
+            letter-spacing: .08em
+        }
+
+        .nav a {
+            color: #F3E2C3;
+            margin-left: 14px;
+            text-decoration: none;
+            font-size: .85rem;
+            letter-spacing: .05em
+        }
+
+        .mn {
+            display: none;
+            background: none;
+            border: 1px solid rgba(243, 226, 195, .5);
+            color: #F3E2C3;
+            border-radius: 6px;
+            font-size: 1.3rem;
+            line-height: 1;
+            min-width: 44px;
+            min-height: 44px;
+            cursor: pointer
+        }
+
+        @media(max-width:700px) {
+            .mn {
+                display: block
+            }
+
+            .nav nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: #4A2E1B;
+                border-bottom: 3px solid #2a170b
+            }
+
+            .nav.open nav {
+                display: flex
+            }
+
+            .nav nav a {
+                margin: 0;
+                padding: 14px 20px;
+                font-size: 1rem;
+                border-top: 1px solid rgba(243, 226, 195, .15)
+            }
+        }
+
+        section {
+            padding-block: 64px;
+            padding-inline: max(20px, calc((100% - 1000px)/2))
+        }
+
+        @media(max-width:600px) {
+            section {
+                padding-block: 44px
+            }
+
+            h2 {
+                font-size: 1.55rem
+            }
+        }
+
+        section.alt {
+            background: var(--alt)
+        }
+
+        .lgl {
+            filter: brightness(0) invert(.93) sepia(.25)
+        }
+
+        /* Banner: hoje mostra o logo. Para video, veja o comentario no JavaScript, antes da funcao site */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 56px 20px 56px;
+            background: var(--hero);
+            border-bottom: 3px solid var(--acc)
+        }
+
+        .hero-media {
+            display: flex;
+            justify-content: center;
+            width: 100%
+        }
+
+        .hero-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .hero-txt {
+            position: relative;
+            z-index: 2;
+            max-width: 680px
+        }
+
+        .hero.video {
+            min-height: 92vh;
+            justify-content: center;
+            color: #F3E2C3
+        }
+
+        .hero.video .hero-media {
+            position: absolute;
+            inset: 0
+        }
+
+        .hero.video .hero-media:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 16, 8, .55)
+        }
+
+        .hero.video h1,
+        .hero.video .rest,
+        .hero.video .tg,
+        .hero.video .kicker {
+            color: #F3E2C3
+        }
+
+        .logo {
+            width: min(250px, 60vw);
+            display: block;
+            margin: 0 auto 6px
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 10vw, 4.8rem);
+            letter-spacing: .04em;
+            margin: 0;
+            color: var(--hd)
+        }
+
+        .rest {
+            letter-spacing: .55em;
+            padding-left: .55em;
+            font-size: clamp(.8rem, 3vw, 1.05rem);
+            margin: 2px 0 18px;
+            color: var(--hd)
+        }
+
+        .tg {
+            font-weight: 600;
+            margin: 14px 0 0
+        }
+
+        .kicker {
+            margin: 0 0 10px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-size: .78rem;
+            color: var(--acc);
+            font-weight: 600
+        }
+
+        .open {
+            display: inline-block;
+            padding: 2px 14px;
+            border: 1px solid var(--hd);
+            border-radius: 99px;
+            font-size: .85rem;
+            margin: 0
+        }
+
+        .btns {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 22px
+        }
+
+        .sub {
+            text-align: center;
+            margin: 0 0 30px;
+            opacity: .8
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 18px 0
+        }
+
+        .tags span {
+            border: 1px solid var(--ln);
+            border-radius: 99px;
+            padding: 3px 14px;
+            font-size: .85rem
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 18px
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--ln);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px -10px rgba(74, 46, 27, .5)
+        }
+
+        .card img,
+        .ph {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block
+        }
+
+        .ph {
+            background: var(--ph)
+        }
+
+        .cb {
+            padding: 12px 14px
+        }
+
+        .cb h3 {
+            font-size: 1rem;
+            letter-spacing: .04em;
+            margin: 0 0 4px;
+            color: var(--hd)
+        }
+
+        .cb p {
+            margin: 0 0 6px;
+            font-size: .9rem;
+            opacity: .85
+        }
+
+        .cb b {
+            color: var(--acc)
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 22px
+        }
+
+        .tabs button {
+            background: none;
+            border: 1px solid var(--ln);
+            color: var(--ink);
+            min-height: 40px;
+            padding: 6px 14px;
+            border-radius: 99px;
+            font: inherit;
+            cursor: pointer
+        }
+
+        .tabs button.on {
+            padding: 6px 14px;
+            min-height: 40px;
+            border-color: #4A2E1B
+        }
+
+        .story {
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+            white-space: pre-line
+        }
+
+        figure {
+            margin: 0
+        }
+
+        .rv {
+            font-style: italic
+        }
+
+        .rv b {
+            display: block;
+            font-style: normal;
+            color: var(--acc);
+            margin-top: 6px
+        }
+
+        .promo {
+            background: #4A2E1B;
+            color: #F3E2C3;
+            text-align: center;
+            padding: 14px;
+            border-radius: 6px;
+            margin-top: 22px;
+            font-weight: 600
+        }
+
+        form {
+            max-width: 520px;
+            margin: auto;
+            display: grid;
+            gap: 10px
+        }
+
+        input,
+        textarea,
+        select {
+            font: inherit;
+            padding: 9px;
+            border: 1px solid var(--ln);
+            border-radius: 5px;
+            background: var(--card);
+            color: var(--ink);
+            width: 100%
+        }
+
+        .map {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px
+        }
+
+        @media(max-width:700px) {
+            .map {
+                grid-template-columns: 1fr
+            }
+        }
+
+        iframe {
+            width: 100%;
+            height: 320px;
+            border: 1px solid var(--ln);
+            border-radius: 6px
+        }
+
+        .hrs div {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed var(--ln);
+            padding: 3px 0
+        }
+
+        footer {
+            background: #3b2314;
+            color: #F3E2C3;
+            padding: 44px 20px 96px;
+            text-align: center
+        }
+
+        .ft {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px
+        }
+
+        .ft h4 {
+            font-family: Cinzel, Georgia, serif;
+            letter-spacing: .08em;
+            margin: 0 0 10px;
+            color: #E7C79B
+        }
+
+        .ft p {
+            margin: 4px 0;
+            overflow-wrap: anywhere
+        }
+
+        footer a {
+            color: #E7C79B
+        }
+
+        .soc {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .soc a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 0 16px;
+            border: 1px solid #E7C79B;
+            border-radius: 99px;
+            text-decoration: none
+        }
+
+        .cp {
+            margin: 28px 0 0;
+            font-size: .8rem;
+            opacity: .7
+        }
+
+        .wa {
+            position: fixed;
+            right: 16px;
+            bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+            background: #25D366;
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 6;
+            box-shadow: 0 3px 10px #0006
+        }
+
+        #admin {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            background: var(--bg);
+            overflow: auto;
+            padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 40px
+        }
+
+        #admin.on {
+            display: block
+        }
+
+        .ah {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 14px
+        }
+
+        .ah span {
+            flex: 1;
+            font-size: .85rem
+        }
+
+        .ab {
+            max-width: 720px;
+            margin: auto
+        }
+
+        .ab label {
+            display: block;
+            margin: 8px 0;
+            font-size: .85rem
+        }
+
+        .r {
+            border: 1px solid var(--ln);
+            border-radius: 6px;
+            padding: 10px;
+            margin: 12px 0;
+            background: var(--card)
+        }
+
+        .r.h {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .r.h input {
+            width: auto
+        }
+
+        .ip img {
+            width: 120px;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 6px
+        }
+
+        .ck input {
+            width: auto
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="0" height="0" style="position:absolute">
+        <symbol id="w" viewBox="0 0 100 100">
+            <g fill="none" stroke="currentColor" stroke-width="3">
+                <circle cx="50" cy="50" r="46" />
+                <circle cx="50" cy="50" r="38" />
+                <circle cx="50" cy="50" r="7" />
+                <path d="M50 12v76M12 50h76M23 23l54 54M77 23L23 77" />
+            </g>
+        </symbol>
+    </svg>
+    <div id="root"></div>
+    <a class="wa" id="wa" href="#">WhatsApp</a>
+    <div id="admin"></div>
+    <script type="application/json"
+        id="d">{"cfg": {"name": "Herradura Restaurante", "logo": "/logo.png", "tagline": "Churrasco, comida caseira e carnes na parrilha, com sabor de fazenda.", "phone": "5511999999999", "city": "São José dos Pinhais", "cv_title": "Parada Ideal no Caminho do Vinho", "cv_text": "Venha fazer uma pausa gastronômica durante o seu passeio pelo Caminho do Vinho. Aqui você encontra churrasco, carnes na parrilha e comida caseira em um ambiente rústico e acolhedor, perfeito para almoçar ou jantar em família, com amigos ou em grupo.", "address": "Rua Júlio César Setenareski, 2500, Colônia Murici", "mapq": "Herradura restaurant, Rua Júlio César Setenareski, 2500, São José dos Pinhais, PR", "insta": "herradura.restaurant", "facebook": "https://facebook.com/herradura.restaurant", "email": "", "mapurl": "https://www.google.com/maps/place/Herradura+restaurant/@-25.5696752,-49.124187,19.75z/data=!4m15!1m8!3m7!1s0x94dcf6764fe5a07f:0xddf724bc90aa575!2sR.+Júlio+César+Setenareski,+2500+-+Colônia+Murici,+São+José+dos+Pinhais+-+PR,+83085-290!3b1!8m2!3d-25.569621!4d-49.1243727!16s%2Fg%2F11mnbxys_v!3m5!1s0x94dcf70f7db6af61:0xfe822a382e87b40!8m2!3d-25.5695791!4d-49.1242222!16s%2Fg%2F11vwwnr1v0?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D", "mapembed": "", "ifood": "", "promo": "Mostre este site e ganhe uma sobremesa da casa!", "story": "A Herradura nasceu da vontade de reunir a família em volta da mesa, como nas antigas fazendas.\n\nAqui o fogo é lento, a carne é selecionada e a comida caseira vem do fogão a lenha, sempre feita com carinho. Cada detalhe da casa, da madeira às rodas de carroça, lembra de onde viemos.", "hours": [{"o": "11:00", "c": "16:00"}, {"o": "", "c": ""}, {"o": "11:00", "c": "23:00"}, {"o": "11:00", "c": "23:00"}, {"o": "11:00", "c": "23:00"}, {"o": "11:00", "c": "00:00"}, {"o": "11:00", "c": "00:00"}]}, "cats": ["Parrilla", "Churrasco", "Comida Caseira", "Sobremesas", "Bebidas"], "menu": [{"cat": "Parrilla", "name": "Ancho na Parrilla", "desc": "Corte macio grelhado na brasa, com chimichurri.", "price": "R$ 89,90", "img": "", "hl": true}, {"cat": "Parrilla", "name": "Picanha na Parrilla", "desc": "Picanha selecionada, ponto a escolher.", "price": "R$ 94,90", "img": "", "hl": true}, {"cat": "Churrasco", "name": "Costela no Bafo", "desc": "Assada lentamente por horas.", "price": "R$ 79,90", "img": "", "hl": true}, {"cat": "Churrasco", "name": "Linguiça Artesanal", "desc": "Com pão de alho e vinagrete.", "price": "R$ 42,00", "img": "", "hl": false}, {"cat": "Comida Caseira", "name": "Feijão Tropeiro", "desc": "Com couve, ovo e torresmo.", "price": "R$ 38,00", "img": "", "hl": false}, {"cat": "Comida Caseira", "name": "Galinhada da Casa", "desc": "Arroz cremoso com frango caipira.", "price": "R$ 46,00", "img": "", "hl": false}, {"cat": "Sobremesas", "name": "Doce de Leite com Queijo", "desc": "Clássico da roça.", "price": "R$ 18,00", "img": "", "hl": false}, {"cat": "Bebidas", "name": "Suco Natural", "desc": "Laranja, limão ou maracujá.", "price": "R$ 12,00", "img": "", "hl": false}], "gallery": [{"img": "", "desc": "Nosso salão rústico, todo em madeira."}, {"img": "", "desc": "A parrilla acesa, sabor de brasa de verdade."}, {"img": "", "desc": "Mesa farta de comida caseira."}], "reviews": [{"name": "Cliente (exemplo)", "text": "Carne no ponto certo e ambiente aconchegante. Voltaremos!"}, {"name": "Cliente (exemplo)", "text": "A comida caseira lembra a da vovó."}], "events": [{"title": "Feijoada de Sábado", "desc": "Todo sábado, a partir das 11h."}, {"title": "Música ao Vivo", "desc": "Sextas à noite, com repertório sertanejo raiz."}]}</script>
+    <script>
+        const D = JSON.parse(document.getElementById('d').textContent);
+        const $ = s => document.querySelector(s), esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const get = p => p.split('.').reduce((o, k) => o[k], D), set = (p, v) => { const a = p.split('.'), l = a.pop(); a.reduce((o, k) => o[k], D)[l] = v };
+        const DN = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+        let tab = D.cats[0], at = 'g';
+        const pic = s => s ? `<img loading="lazy" src="${esc(s)}" alt="">` : '<div class="ph"></div>';
+        const card = m => `<article class="card">${pic(m.img)}<div class="cb"><h3>${esc(m.name)}</h3><p>${esc(m.desc)}</p><b>${esc(m.price)}</b></div></article>`;
+        const menuH = () => `<div class="tabs">${D.cats.map(k => `<button class="${k == tab ? 'on' : ''}" data-t="${esc(k)}">${esc(k)}</button>`).join('')}</div><div class="grid">${D.menu.filter(m => m.cat == tab).map(card).join('') || '<p>Em breve.</p>'}</div>`;
+        const fmt = p => { const m = String(p).match(/^(\d{2})(\d{2})(\d{4,5})(\d{4})$/); return m ? `+${m[1]} (${m[2]}) ${m[3]}-${m[4]}` : p }, safe = u => /^https?:\/\//.test(u) ? u : '#';
+        function isOpen() { const n = new Date, h = D.cfg.hours[n.getDay()], t = n.getHours() * 60 + n.getMinutes(), f = s => { const [a, b] = s.split(':'); return a * 60 + +b }; if (!h.o || !h.c) return false; const o = f(h.o); let c = f(h.c); if (c <= o) c += 1440; return t >= o && t < c }
+        /* BANNER -> VIDEO: no bloco hero-media abaixo, troque a tag img do logo por <video src="/hero.mp4" autoplay muted loop playsinline></video> e adicione a classe "video" na section com classe "hero" */
+        function site() {
+            const c = D.cfg, wa = t => `https://wa.me/${c.phone}?text=${encodeURIComponent(t)}`, hl = D.menu.filter(m => m.hl), [n1, ...n2] = c.name.split(' ');
+            const mapLink = /^https?:\/\//.test(c.mapurl || '') ? c.mapurl : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(c.mapq), emb = (String(c.mapembed || '').match(/src="([^"]+)"/) || [0, c.mapembed || ''])[1], mapSrc = emb.startsWith('https://www.google.com/maps/embed') ? emb : 'https://www.google.com/maps?q=' + encodeURIComponent(c.mapq) + '&output=embed';
+            $('#wa').href = wa('Olá! Vim pelo site e gostaria de mais informações.');
+            document.title = c.name + ' – Churrasco, comida caseira e parrilla no Caminho do Vinho' + (c.city ? ', ' + c.city : '');
+            $('#ld').textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Restaurant', name: c.name, servesCuisine: ['Churrasco', 'Comida caseira', 'Parrilla'], description: 'Restaurante no Caminho do Vinho' + (c.city ? ', ' + c.city : ''), address: c.address + (c.city ? ', ' + c.city : ''), telephone: '+' + c.phone });
+            $('#root').innerHTML = `
+<header class="nav wood"><b>${c.logo ? `<img class="lgl" src="${esc(c.logo)}" alt="" style="height:34px;vertical-align:middle;margin-right:8px">` : ''}${esc(c.name)}</b><nav><a href="#caminho">Caminho do Vinho</a><a href="#cardapio">Cardápio</a><a href="#historia">História</a><a href="#galeria">Fotos</a><a href="#onde">Onde estamos</a><a href="#contato">Contato</a></nav><button class="mn" data-mn aria-label="Abrir menu">☰</button></header>
+<section class="hero"><div class="hero-media">${c.logo ? `<img class="logo" src="${esc(c.logo)}" alt="Logo ${esc(c.name)}">` : ''}</div><div class="hero-txt"><h1>${esc(n1)}</h1><p class="rest">${esc(n2.join(' '))}</p><p class="kicker">📍 Caminho do Vinho${c.city ? ' · ' + esc(c.city) : ''}</p><p class="open">${isOpen() ? '🟢 Aberto agora' : '🔴 Fechado agora'}</p><p class="tg">${esc(c.tagline)}</p><div class="btns"><a class="btn" href="${wa('Olá! Gostaria de fazer um pedido.')}">Pedir agora</a><a class="btn alt" href="#reserva">Reservar mesa</a></div></div></section>
+<section id="caminho"><h2>${esc(c.cv_title)}</h2><p class="tags"><span>📍 Caminho do Vinho</span><span>🍽 Passeio gastronômico</span><span>👥 Grupos e excursões</span></p><p class="story">${esc(c.cv_text)}</p><div class="btns"><a class="btn" href="${wa('Olá! Gostaria de reservar para um grupo durante o passeio pelo Caminho do Vinho.')}">Reservar para grupo</a><a class="btn alt" style="color:var(--ink)" href="#onde">Como chegar</a></div></section><section><h2>Pratos da Casa</h2><p class="sub">Os queridinhos de quem visita a Herradura</p><div class="grid">${hl.map(card).join('')}</div></section>
+<section class="alt" id="cardapio"><h2>Cardápio</h2><p class="sub">Parrilla, churrasco e comida caseira</p><div id="mb">${menuH()}</div><div class="btns"><a class="btn" href="${wa('Olá! Gostaria de fazer um pedido.')}">Pedir pelo WhatsApp</a>${c.ifood ? `<a class="btn alt" style="color:var(--ink)" href="${esc(safe(c.ifood))}">Pedir pelo delivery</a>` : ''}</div></section>
+<section id="historia"><h2>Nossa História</h2><p class="story">${esc(c.story)}</p></section>
+<section class="alt" id="galeria"><h2>Galeria</h2><p class="sub">Um pouco do nosso cantinho</p><div class="grid">${D.gallery.map(g => `<figure class="card">${pic(g.img)}<figcaption class="cap">${esc(g.desc)}</figcaption></figure>`).join('')}</div></section>
+<section><h2>Eventos & Promoções</h2><p class="sub">&nbsp;</p><div class="grid">${D.events.map(e => `<div class="card cb"><h3>${esc(e.title)}</h3><p>${esc(e.desc)}</p></div>`).join('')}</div>${c.promo ? `<div class="promo">🎟 ${esc(c.promo)}</div>` : ''}</section>
+<section class="alt"><h2>Quem Já Veio</h2><p class="sub">&nbsp;</p><div class="grid">${D.reviews.map(r => `<div class="card cb rv">“${esc(r.text)}”<b>${esc(r.name)}</b></div>`).join('')}</div></section>
+<section id="reserva"><h2>Reserve sua Mesa</h2><p class="sub">Preencha e confirme pelo WhatsApp</p><form id="rf"><input name="n" placeholder="Seu nome" required><input name="d" type="date" required><input name="h" type="time" required><input name="p" type="number" min="1" placeholder="Nº de pessoas" required><button>Reservar pelo WhatsApp</button></form></section>
+<section class="alt" id="onde"><h2>Onde Nos Achar</h2><p class="sub">No Caminho do Vinho · ${esc(c.address)}${c.city ? ' – ' + esc(c.city) : ''}</p><div class="map"><div><iframe loading="lazy" title="Mapa" src="${esc(mapSrc)}"></iframe><div class="btns"><a class="btn" href="${esc(mapLink)}">Como chegar</a></div></div><div class="hrs"><h3>Horários</h3>${[1, 2, 3, 4, 5, 6, 0].map(i => { const h = c.hours[i]; return `<div><span>${DN[i]}</span><span>${h.o && h.c ? h.o + ' – ' + h.c : 'Fechado'}</span></div>` }).join('')}</div></div></section>
+<footer id="contato"><div class="ft"><div>${c.logo ? `<img class="lgl" src="${esc(c.logo)}" alt="" style="height:64px;display:block;margin:0 auto 8px">` : ''}<b style="font-family:Cinzel,serif;letter-spacing:.1em">${esc(c.name)}</b><p>📍 ${esc(c.address)}${c.city ? ' – ' + esc(c.city) : ''}</p></div><div><h4>Contato</h4><p><a href="${wa('Olá! Gostaria de mais informações.')}">WhatsApp ${esc(fmt(c.phone))}</a></p>${c.email ? `<p><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></p>` : ''}<p><a href="${esc(mapLink)}">Como chegar</a></p></div><div><h4>Redes sociais</h4><div class="soc">${c.insta ? `<a href="https://instagram.com/${esc(c.insta.replace(/^@/, ''))}">Instagram</a>` : ''}${c.facebook ? `<a href="${esc(safe(c.facebook))}">Facebook</a>` : ''}<a href="${wa('Olá! Vim pelo site.')}">WhatsApp</a></div></div></div><p class="cp">© ${new Date().getFullYear()} ${esc(c.name)}. Todos os direitos reservados.</p></footer>`;
+            navUp(); $('#rf').onsubmit = e => { e.preventDefault(); const f = e.target; location.href = wa(`Olá! Gostaria de reservar uma mesa. Nome: ${f.n.value}, data: ${f.d.value}, horário: ${f.h.value}, pessoas: ${f.p.value}.`) }
+        }
+        function navUp() { const n = $('.nav'); if (!n) return; const on = scrollY > 120; n.classList.toggle('show', on); if (!on) n.classList.remove('open') }
+        addEventListener('scroll', navUp, { passive: true });
+        document.addEventListener('click', e => { const n = $('.nav'); if (!n) return; if (e.target.closest('[data-mn]')) n.classList.toggle('open'); else if (e.target.closest('.nav a')) n.classList.remove('open') });
+        /* ---- admin ---- */
+        const F = (p, l, t = 'text') => `<label>${l}${t == 'area' ? `<textarea rows="6" data-p="${p}">${esc(get(p))}</textarea>` : `<input type="${t}" data-p="${p}" value="${esc(get(p))}">`}</label>`;
+        const IMG = p => `<div class="ip">${get(p) ? `<img src="${esc(get(p))}">` : ''}<input type="file" accept="image/*" data-img="${p}"></div>`;
+        const row = (k, i, x) => `<div class="r">${x}<button data-del="${k}.${i}">Remover</button></div>`;
+        const ADD = { menu: () => ({ cat: D.cats[0], name: 'Novo prato', desc: '', price: 'R$ 0,00', img: '', hl: false }), gallery: () => ({ img: '', desc: '' }), reviews: () => ({ name: '', text: '' }), events: () => ({ title: '', desc: '' }) };
+        const add = k => `<button data-add="${k}">+ Adicionar</button>`;
+        const B = {
+            g: () => '<label>Logo (PNG com fundo transparente)</label>' + IMG('cfg.logo') + ['name:Nome', 'tagline:Frase de destaque', 'phone:WhatsApp (só números com DDI, ex 5511999999999)', 'city:Cidade (ajuda no Google)', 'address:Endereço', 'mapq:Endereço para o mapa (usado se não houver pin)', 'mapurl:Link do pin no Google Maps (Compartilhar → Copiar link)', 'mapembed:Mapa incorporado (Compartilhar → Incorporar um mapa → copiar o HTML)', 'insta:Instagram (usuário)', 'facebook:Facebook (link completo, opcional)', 'email:E-mail de contato (opcional)', 'ifood:Link do delivery (opcional)', 'promo:Promoção do site', 'cv_title:Título da seção Caminho do Vinho'].map(s => { const [k, l] = s.split(':'); return F('cfg.' + k, l) }).join('') + F('cfg.story', 'Nossa história', 'area') + F('cfg.cv_text', 'Texto da seção Caminho do Vinho', 'area') + '<h4>Horários (vazio = fechado)</h4>' + D.cfg.hours.map((h, i) => `<div class="r h">${DN[i]} <input type="time" data-p="cfg.hours.${i}.o" value="${h.o}"> às <input type="time" data-p="cfg.hours.${i}.c" value="${h.c}"></div>`).join(''),
+            m: () => `<label>Categorias (separadas por vírgula)<input data-cats value="${esc(D.cats.join(', '))}"></label>` + D.menu.map((m, i) => row('menu', i, IMG(`menu.${i}.img`) + `<label>Categoria<select data-p="menu.${i}.cat">${D.cats.map(k => `<option ${k == m.cat ? 'selected' : ''}>${esc(k)}</option>`).join('')}</select></label>` + F(`menu.${i}.name`, 'Nome') + F(`menu.${i}.price`, 'Preço') + F(`menu.${i}.desc`, 'Descrição') + `<label class="ck"><input type="checkbox" data-p="menu.${i}.hl" ${m.hl ? 'checked' : ''}> Prato destaque</label>`)).join('') + add('menu'),
+            f: () => D.gallery.map((g, i) => row('gallery', i, IMG(`gallery.${i}.img`) + F(`gallery.${i}.desc`, 'Descrição da foto'))).join('') + add('gallery'),
+            r: () => D.reviews.map((g, i) => row('reviews', i, F(`reviews.${i}.name`, 'Nome') + F(`reviews.${i}.text`, 'Depoimento', 'area'))).join('') + add('reviews'),
+            e: () => D.events.map((g, i) => row('events', i, F(`events.${i}.title`, 'Título') + F(`events.${i}.desc`, 'Descrição'))).join('') + add('events')
+        };
+        const T = { g: 'Geral', m: 'Cardápio', f: 'Fotos', r: 'Depoimentos', e: 'Eventos' };
+        function adm() { $('#admin').innerHTML = `<div class="ah"><b>Painel</b><span id="st">Edite e clique em salvar.</span><button data-pub>Salvar alterações</button><button data-close>Fechar</button></div><div class="tabs">${Object.keys(T).map(k => `<button class="${k == at ? 'on' : ''}" data-at="${k}">${T[k]}</button>`).join('')}</div><div class="ab">${B[at]()}</div>` }
+        const shrink = (f, png) => new Promise(r => { const i = new Image; i.onload = () => { const s = Math.min(1, (png ? 700 : 900) / Math.max(i.width, i.height)), c = document.createElement('canvas'); c.width = i.width * s; c.height = i.height * s; c.getContext('2d').drawImage(i, 0, 0, c.width, c.height); r(png ? c.toDataURL('image/png') : c.toDataURL('image/jpeg', .78)) }; i.src = URL.createObjectURL(f) });
+        async function api(u, b) { const r = await fetch(u, { method: 'POST', headers: { 'content-type': 'application/json', 'x-admin-password': sessionStorage.getItem('pw') || '' }, body: JSON.stringify(b) }); if (!r.ok) throw new Error(r.status); return r.json() }
+        async function enviar(du) { const [m, b] = du.split(','), tipo = m.match(/data:(.*?);/)[1]; return (await api('/api/upload', { nome: 'foto.' + (tipo == 'image/png' ? 'png' : 'jpg'), tipo, dados: b })).url }
+        async function salvar() { const st = $('#st'); try { st.textContent = 'Salvando…'; await api('/api/save', D); st.textContent = 'Salvo! O site já está atualizado.' } catch (x) { st.textContent = x.message == '401' ? 'Senha incorreta. Recarregue a página e entre de novo.' : 'Não foi possível salvar. Tente novamente.' } }
+        document.addEventListener('input', e => { const t = e.target; if (t.dataset.p) set(t.dataset.p, t.type == 'checkbox' ? t.checked : t.value); if ('cats' in t.dataset) D.cats = t.value.split(',').map(s => s.trim()).filter(Boolean) });
+        document.addEventListener('change', async e => { const t = e.target; if (t.dataset.img && t.files[0]) { const st = $('#st'); try { if (st) st.textContent = 'Enviando foto…'; set(t.dataset.img, await enviar(await shrink(t.files[0], t.dataset.img == 'cfg.logo'))); adm() } catch (x) { if (st) st.textContent = 'Falha ao enviar a foto.' } } });
+        document.addEventListener('click', e => {
+            const t = e.target.closest('button'); if (!t) return; const d = t.dataset;
+            if (d.t) { tab = d.t; $('#mb').innerHTML = menuH() }
+            else if (d.at) { at = d.at; adm() }
+            else if (d.add) { D[d.add].push(ADD[d.add]()); adm() }
+            else if (d.del) { const [k, i] = d.del.split('.'); D[k].splice(i, 1); adm() }
+            else if ('pub' in d) salvar();
+            else if ('close' in d) { if (location.hash) location.hash = ''; else if (isAdm()) location.href = location.pathname.replace(/administracao\/?$/, ''); $('#admin').classList.remove('on'); tab = D.cats[0]; site() }
+            else if ('open' in d) { $('#admin').classList.add('on'); adm() }
+        });
+        site();
+        const isAdm = () => /administracao\/?$/.test(location.pathname) || location.hash == '#/administracao';
+        if (isAdm()) { const m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex'; document.head.appendChild(m) }
+        function login() { const a = $('#admin'); a.classList.add('on'); a.innerHTML = '<form id="lg" style="margin-top:20vh"><h2>Administração</h2><input type="password" id="pw" placeholder="Senha" autocomplete="current-password" required><button>Entrar</button><span id="lm" style="text-align:center"></span></form>'; $('#lg').onsubmit = async e => { e.preventDefault(); sessionStorage.setItem('pw', $('#pw').value); try { await api('/api/check', {}); adm() } catch (x) { sessionStorage.removeItem('pw'); $('#lm').textContent = 'Senha incorreta.' } } }
+        async function chk() { const a = $('#admin'); if (!isAdm()) { a.classList.remove('on'); return } a.classList.add('on'); if (sessionStorage.getItem('pw')) { try { await api('/api/check', {}); adm(); return } catch (x) { sessionStorage.removeItem('pw') } } login() }
+        addEventListener('hashchange', chk);
+        fetch('/api/site').then(r => r.ok ? r.json() : null).then(d => { if (d && d.cfg) { D.cfg = { ...D.cfg, ...d.cfg };['cats', 'menu', 'gallery', 'reviews', 'events'].forEach(k => { if (d[k]) D[k] = d[k] }); tab = D.cats[0]; site() } }).catch(() => { }).finally(chk);
+    </script>
+</body>
+
+</html>
